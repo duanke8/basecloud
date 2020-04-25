@@ -10,11 +10,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>payment</module>
+        <module>payment8001</module>
         <module>order</module>
         <module>common</module>
         <module>eureka-server1</module>
         <module>eureka-server2</module>
+        <module>payment8002</module>
     </modules>
 
     <name>Maven</name>

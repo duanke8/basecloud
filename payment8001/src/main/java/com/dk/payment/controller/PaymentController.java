@@ -29,7 +29,7 @@ public class PaymentController {
     @GetMapping("/getAllPayment")
     public CommonResult<List<Payment>> getAllPayment(){
         log.info(port);
-        return new CommonResult<List<Payment>>(200,"SUCCESS",paymentService.getAllPayment());
+        return new CommonResult<List<Payment>>(200,"SUCCESS port="+port,paymentService.getAllPayment());
     }
 
     @PostMapping("/createPayment")

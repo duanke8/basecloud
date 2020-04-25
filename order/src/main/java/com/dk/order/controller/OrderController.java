@@ -18,19 +18,21 @@ import javax.annotation.Resource;
 @Slf4j
 public class OrderController {
 
-    private String URL="http://localhost:8001";
+//    private String URL="http://localhost:8001";
+    private String URL="http://payment";
 
     @Resource
     private RestTemplate restTemplate;
 
     @GetMapping("/getAllOrder")
     public CommonResult getAllOrder(){
-        return restTemplate.getForObject(URL+"/payment/getAllPayment", CommonResult.class);
+        log.info(URL);
+        return restTemplate.getForObject(URL+"/getAllPayment", CommonResult.class);
     }
 
     @GetMapping("/createOrder")
     public CommonResult createOrder(Payment payment){
-        log.info("order    "+payment.toString());
-        return restTemplate.postForObject(URL+"/payment/createPayment1",payment, CommonResult.class);
+        log.info(URL+" order    "+payment.toString());
+        return restTemplate.postForObject(URL+"/createPayment1",payment, CommonResult.class);
     }
 }

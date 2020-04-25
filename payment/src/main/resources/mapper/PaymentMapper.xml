@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dk.payment.dao.PaymentDao">
+    <resultMap id="paymentList" type="com.dk.common.entity.Payment">
+        <id property="id" column="id"/>
+        <result property="paymentNumber" column="payment_number"/>
+    </resultMap>
+
+    <select id="getAllPayment" resultMap="paymentList">
+        select id , payment_number from payment
+    </select>
+
+
+    <insert id="createPayment" parameterType="String">
+        insert into payment (payment_number) values ( #{number} )
+    </insert>
+    <insert id="createPayment1" parameterType="com.dk.common.entity.Payment">
+        insert into payment (payment_number) values ( #{paymentNumber} )
+    </insert>
+    <insert id="bulkInsertPayment" parameterType="java.util.List">
+        insert into payment (payment_number) values
+        <foreach collection="list" item="payment" separator=",">
+          (#{payment.paymentNumber})
+        </foreach>
+    </insert>
+</mapper>

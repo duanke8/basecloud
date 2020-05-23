@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: payment8001
+    name: payment
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource      #当前数据源操作类型
 #    driver-class-name: org.gjt.mm.mysql.Driver        #mysql驱动包
@@ -21,6 +21,16 @@ eureka:
     service-url:
       defaultZone: http://eureka2.com:7002/eureka,http://eureka1.com:7001/eureka
       #defaultZone: http://localhost:7001/eureka
+
+  instance:
+    #设置主机名，不显示服务名和端口号
+    instance-id: payment8001
+    # 显示ip地址
+    prefer-ip-address: true
+    # Eureka客户端向服务端发送心跳的时间间隔，单位为秒，默认30s
+    lease-renewal-interval-in-seconds: 1
+    # Eureka 服务端在收到最后一次心跳的时间上线，单位为秒，默认90s，超时剔除服务
+    lease-expiration-duration-in-seconds: 4
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

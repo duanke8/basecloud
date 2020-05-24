@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/basecloud.iml" filepath="$PROJECT_DIR$/.idea/basecloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server1/eureka-server1.iml" filepath="$PROJECT_DIR$/eureka-server1/eureka-server1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server2/eureka-server2.iml" filepath="$PROJECT_DIR$/eureka-server2/eureka-server2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order/order.iml" filepath="$PROJECT_DIR$/order/order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payment8001/payment8001.iml" filepath="$PROJECT_DIR$/payment8001/payment8001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payment8002/payment8002.iml" filepath="$PROJECT_DIR$/payment8002/payment8002.iml" />
+    </modules>
+  </component>
+</project>

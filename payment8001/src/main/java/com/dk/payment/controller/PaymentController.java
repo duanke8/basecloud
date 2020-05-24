@@ -6,6 +6,8 @@ import com.dk.common.entity.Payment;
 import com.dk.payment.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -26,10 +28,14 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
+    @Resource
+    private DiscoveryClient discoveryClient;
+
     @GetMapping("/getAllPayment")
     public CommonResult<List<Payment>> getAllPayment(){
-        log.info(port);
-        return new CommonResult<List<Payment>>(200,"SUCCESS",paymentService.getAllPayment());
+        log.info("port= " + port);
+        seeDiscovery();
+        return new CommonResult<List<Payment>>(200,"SUCCESS port="+port,paymentService.getAllPayment());
     }
 
     @PostMapping("/createPayment")
@@ -48,6 +54,20 @@ public class PaymentController {
     public CommonResult bulkInsertPayment(@RequestBody List<Payment> list){
         log.info(list.toString());
         return new CommonResult(200, CommonUtil.SUCCESS,paymentService.bulkInsertPayment(list));
+    }
+
+    private void seeDiscovery(){
+        List<String> services = discoveryClient.getServices();
+        for (String service : services) {
+            log.info("service = " + service);
+        }
+
+        List<ServiceInstance> payment = discoveryClient.getInstances("payment");
+        for (ServiceInstance ser : payment) {
+            log.info("ser.getServiceId()= "+ser.getServiceId()+" ,ser.getHost()="+ ser.getHost()+" ,ser.getInstanceId()="+ser.getInstanceId()
+                    +" ,ser.getScheme()="+ser.getScheme() +" ,ser.getMetadata()="+ser.getMetadata()+" ,ser.getPort()="+
+                    ser.getPort()+" ,ser.getUri()="+ser.getUri());
+        }
     }
 
 }
